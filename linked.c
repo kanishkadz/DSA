@@ -9,6 +9,8 @@ typedef struct Node N;
 N *start=NULL, *ptr, *tmp;
 void CreateList();
 void PrintList();
+void InsertFirst();
+void InsertLast();
 
 void CreateList()
 {
@@ -38,6 +40,28 @@ void PrintList()
     }
 }
 
+void InsertFirst()
+{
+    ptr=(N*)malloc(sizeof(N));
+    printf("\nEnter the value to insert at first:");
+    scanf("%d",&ptr->val);
+    ptr->next=start;
+    start=ptr;
+}
+
+void InsertLast()
+{
+    tmp=start;
+    while(tmp->next!=NULL)
+    {
+        tmp=tmp->next;
+    }
+    ptr=(N*)malloc(sizeof(N));
+    printf("\nEnter value to insert at last:");
+    scanf("%d",&ptr->val);
+    tmp->next=ptr;
+    ptr->next=NULL;
+}
 void main()
 {
     int ch;
@@ -46,6 +70,8 @@ void main()
         printf("\n-: M E N U :-");
         printf("\n1 --> Create List");
         printf("\n2 --> Print List");
+        printf("\n3 --> Insert at First");
+        printf("\n4 --> Insert at Last");
         printf("\n0 --> Exit");
         printf("\nEnter Your Choice:");
         scanf("%d",&ch);
@@ -53,6 +79,8 @@ void main()
         {
             case 1: CreateList(); break;
             case 2: PrintList(); break;
+            case 3: InsertFirst(); break;
+            case 4: InsertLast(); break;
         }
     } while (ch!=0);
 }
