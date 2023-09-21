@@ -11,6 +11,7 @@ void CreateList();
 void PrintList();
 void InsertFirst();
 void InsertLast();
+void InsertBefore();
 
 void CreateList()
 {
@@ -62,6 +63,23 @@ void InsertLast()
     tmp->next=ptr;
     ptr->next=NULL;
 }
+
+void InsertBefore()
+{
+    int val;
+    printf("\nEnter the value before which to insert:");
+    scanf("%d",&val);
+    tmp=start;
+    while(tmp->next->val!=val)
+    {
+        tmp=tmp->next;
+    }
+    ptr=(N*)malloc(sizeof(N));
+    printf("\nEnter the value to insert:");
+    scanf("%d",&ptr->val);
+    tmp->next=ptr;
+}
+
 void main()
 {
     int ch;
@@ -72,6 +90,7 @@ void main()
         printf("\n2 --> Print List");
         printf("\n3 --> Insert at First");
         printf("\n4 --> Insert at Last");
+        printf("\n5 --> Insert before any node");
         printf("\n0 --> Exit");
         printf("\nEnter Your Choice:");
         scanf("%d",&ch);
@@ -81,6 +100,7 @@ void main()
             case 2: PrintList(); break;
             case 3: InsertFirst(); break;
             case 4: InsertLast(); break;
+            case 5: InsertBefore();break;
         }
     } while (ch!=0);
 }
