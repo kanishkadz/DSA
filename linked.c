@@ -12,6 +12,7 @@ void PrintList();
 void InsertFirst();
 void InsertLast();
 void InsertBefore();
+void Count();
 
 void CreateList()
 {
@@ -80,6 +81,18 @@ void InsertBefore()
     tmp->next=ptr;
 }
 
+void Count()
+{
+    int c=0;
+    tmp=start;
+    while(tmp->next!=NULL)
+    {
+        tmp=tmp->next;
+        c++;
+    }
+    printf("\nThe number of nodes are %d",c+1);
+}
+
 void main()
 {
     int ch;
@@ -91,6 +104,7 @@ void main()
         printf("\n3 --> Insert at First");
         printf("\n4 --> Insert at Last");
         printf("\n5 --> Insert before any node");
+        printf("\n6 --> Count a node");
         printf("\n0 --> Exit");
         printf("\nEnter Your Choice:");
         scanf("%d",&ch);
@@ -100,7 +114,8 @@ void main()
             case 2: PrintList(); break;
             case 3: InsertFirst(); break;
             case 4: InsertLast(); break;
-            case 5: InsertBefore();break;
+            case 5: InsertBefore(); break;
+            case 6: Count(); break;
         }
     } while (ch!=0);
 }
