@@ -13,6 +13,7 @@ void InsertFirst();
 void InsertLast();
 void InsertBefore();
 void Count();
+void Search();
 
 void CreateList()
 {
@@ -93,6 +94,24 @@ void Count()
     printf("\nThe number of nodes are %d",c+1);
 }
 
+void Search()
+{
+    int val,c=0,flag=0;
+    printf("\nEnter the value to search:");
+    scanf("%d",&val);
+    tmp=start;
+    while(tmp->val!=val)
+    {
+        c++;
+        tmp=tmp->next;
+    }
+    flag=1;
+    if(flag==1)
+        printf("\nNode found at %d",c+1);
+    else
+        printf("\nNode not found !!");
+}
+
 void main()
 {
     int ch;
@@ -105,6 +124,7 @@ void main()
         printf("\n4 --> Insert at Last");
         printf("\n5 --> Insert before any node");
         printf("\n6 --> Count a node");
+        printf("\n7 --> Search a node");
         printf("\n0 --> Exit");
         printf("\nEnter Your Choice:");
         scanf("%d",&ch);
@@ -116,6 +136,7 @@ void main()
             case 4: InsertLast(); break;
             case 5: InsertBefore(); break;
             case 6: Count(); break;
+            case 7: Search(); break;
         }
     } while (ch!=0);
 }
