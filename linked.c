@@ -6,7 +6,7 @@ struct Node
     struct Node *next;
 };
 typedef struct Node N;
-N *start=NULL, *ptr, *tmp;
+N *start=NULL, *ptr, *tmp, *prv;
 void CreateList();
 void PrintList();
 void InsertFirst();
@@ -15,6 +15,7 @@ void InsertBefore();
 void Count();
 void Search();
 void DeleteFirst();
+void DeleteLast();
 
 void CreateList()
 {
@@ -120,6 +121,18 @@ void DeleteFirst()
     free(ptr);
 }
 
+void DeleteLast()
+{
+    ptr=start;
+    while(ptr->next!=NULL)
+    {
+        prv=ptr;
+        ptr=ptr->next;
+    }
+    prv->next=NULL;
+    free(ptr);
+}
+
 void main()
 {
     int ch;
@@ -134,6 +147,7 @@ void main()
         printf("\n6 --> Count a node");
         printf("\n7 --> Search a node");
         printf("\n8 --> Delete first node");
+        printf("\n9 --> Delete last node");
         printf("\n0 --> Exit");
         printf("\nEnter Your Choice:");
         scanf("%d",&ch);
@@ -147,6 +161,7 @@ void main()
             case 6: Count(); break;
             case 7: Search(); break;
             case 8: DeleteFirst(); break;
+            case 9: DeleteLast(); break;
         }
     } while (ch!=0);
 }
