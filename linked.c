@@ -14,6 +14,7 @@ void InsertLast();
 void InsertBefore();
 void Count();
 void Search();
+void DeleteFirst();
 
 void CreateList()
 {
@@ -112,6 +113,13 @@ void Search()
         printf("\nNode not found !!");
 }
 
+void DeleteFirst()
+{
+    ptr=start;
+    start=start->next;
+    free(ptr);
+}
+
 void main()
 {
     int ch;
@@ -125,6 +133,7 @@ void main()
         printf("\n5 --> Insert before any node");
         printf("\n6 --> Count a node");
         printf("\n7 --> Search a node");
+        printf("\n8 --> Delete first node");
         printf("\n0 --> Exit");
         printf("\nEnter Your Choice:");
         scanf("%d",&ch);
@@ -137,6 +146,7 @@ void main()
             case 5: InsertBefore(); break;
             case 6: Count(); break;
             case 7: Search(); break;
+            case 8: DeleteFirst(); break;
         }
     } while (ch!=0);
 }
