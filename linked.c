@@ -17,6 +17,7 @@ void Search();
 void DeleteFirst();
 void DeleteLast();
 void DeleteAfter();
+void DeleteBefore();
 
 void CreateList()
 {
@@ -149,6 +150,21 @@ void DeleteAfter()
     free(tmp);
 }
 
+void DeleteBefore()
+{
+    int val;
+    ptr=start;
+    printf("\nEnter the value before which to delete:");
+    scanf("%d",&val);
+    while(ptr->next->val!=val)
+    {
+        prv=ptr;
+        ptr=ptr->next;
+    }
+    prv->next=ptr->next;
+    free(ptr);
+}
+
 void main()
 {
     int ch;
@@ -165,6 +181,7 @@ void main()
         printf("\n8 --> Delete first node");
         printf("\n9 --> Delete last node");
         printf("\n10 --> Delete after a node");
+        printf("\n11 --> Delete before a node");
         printf("\n0 --> Exit");
         printf("\nEnter Your Choice:");
         scanf("%d",&ch);
@@ -180,6 +197,7 @@ void main()
             case 8: DeleteFirst(); break;
             case 9: DeleteLast(); break;
             case 10: DeleteAfter(); break;
+            case 11: DeleteBefore(); break;
         }
     } while (ch!=0);
 }
