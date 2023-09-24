@@ -18,6 +18,7 @@ void DeleteFirst();
 void DeleteLast();
 void DeleteAfter();
 void DeleteBefore();
+void ReverseList();
 
 void CreateList()
 {
@@ -165,6 +166,20 @@ void DeleteBefore()
     free(ptr);
 }
 
+void ReverseList()
+{
+    N *pnode=NULL, *nnode=NULL;
+    tmp=start;
+    while(tmp!=NULL)
+    {
+        nnode=tmp->next;
+        tmp->next=pnode;
+        pnode=tmp;
+        tmp=nnode;
+    }
+    start=pnode;
+}
+
 void main()
 {
     int ch;
@@ -182,6 +197,7 @@ void main()
         printf("\n9 --> Delete last node");
         printf("\n10 --> Delete after a node");
         printf("\n11 --> Delete before a node");
+        printf("\n12 --> Reverse the list");
         printf("\n0 --> Exit");
         printf("\nEnter Your Choice:");
         scanf("%d",&ch);
@@ -198,6 +214,7 @@ void main()
             case 9: DeleteLast(); break;
             case 10: DeleteAfter(); break;
             case 11: DeleteBefore(); break;
+            case 12: ReverseList(); break;
         }
     } while (ch!=0);
 }
