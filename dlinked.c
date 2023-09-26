@@ -10,6 +10,7 @@ typedef struct Node N;
 N *start=NULL, *ptr, *tmp;
 void CreateNode();
 void PrintNode();
+void InsertFirst();
 
 void CreateNode()
 {
@@ -44,6 +45,17 @@ void PrintNode()
         printf("%d <-",ptr->val);
         ptr=ptr->prv;
     }
+}
+
+void InsertFirst()
+{
+    ptr=(N*)malloc(sizeof(N));
+    printf("\nEnter value to insert:");
+    scanf("%d",&ptr->val);
+    ptr->next=start;
+    ptr->prv=NULL;
+    start->prv=ptr;
+    start=ptr;
 }
 
 void main()
