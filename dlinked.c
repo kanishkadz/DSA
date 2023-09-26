@@ -11,6 +11,7 @@ N *start=NULL, *ptr, *tmp;
 void CreateNode();
 void PrintNode();
 void InsertFirst();
+void InsertLast();
 
 void CreateNode()
 {
@@ -58,14 +59,30 @@ void InsertFirst()
     start=ptr;
 }
 
+void InsertLast()
+{
+    tmp=start;
+    while(tmp->next!=NULL)
+    {
+        tmp=tmp->next;
+    }
+    ptr=(N*)malloc(sizeof(N));
+    printf("\nEnter value to insert:");
+    scanf("%d",&ptr->val);
+    ptr->prv=NULL;
+    tmp->next=ptr;
+}
+
 void main()
 {
     int ch;
     do
     {
         printf("\n -: M E N U :-");
-        printf("\n1 --> Create Node");
-        printf("\n2 --> Print Node");
+        printf("\n1 --> Create node");
+        printf("\n2 --> Print node");
+        printf("\n3 --> Insert a node at first");
+        printf("\n4 --> Insert a node at last");
         printf("\n0 --> Exit");
         printf("\nEnter Choice:");
         scanf("%d",&ch);
@@ -73,6 +90,8 @@ void main()
         {
             case 1: CreateNode(); break;
             case 2: PrintNode(); break;
+            case 3: InsertFirst(); break;
+            case 4: InsertLast(); break;
         }
     } while (ch!=0);
     
