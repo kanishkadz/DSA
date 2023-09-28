@@ -14,6 +14,7 @@ void InsertFirst();
 void InsertLast();
 void InsertAfter();
 void InsertBefore();
+void DeleteFirst();
 
 void CreateNode()
 {
@@ -112,6 +113,15 @@ void InsertBefore()
     tmp->next=ptr;
 }
 
+void DeleteFirst()
+{
+    tmp=start;
+    ptr=tmp->next;
+    ptr->prv=NULL;
+    start=ptr;
+    free(tmp);
+}
+
 void main()
 {
     int ch;
@@ -124,6 +134,7 @@ void main()
         printf("\n4 --> Insert a node at last");
         printf("\n5 --> Insert after a node");
         printf("\n6 --> Insert before a node");
+        printf("\n7 --> Delete first node");
         printf("\n0 --> Exit");
         printf("\nEnter Choice:");
         scanf("%d",&ch);
@@ -135,6 +146,7 @@ void main()
             case 4: InsertLast(); break;
             case 5: InsertAfter(); break;
             case 6: InsertBefore(); break;
+            case 7: DeleteFirst(); break;
         }
     } while (ch!=0);
     
