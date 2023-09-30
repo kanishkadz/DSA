@@ -17,6 +17,7 @@ void InsertBefore();
 void DeleteFirst();
 void DeleteLast();
 void DeleteAfter();
+void DeleteBefore();
 
 void CreateNode()
 {
@@ -151,6 +152,22 @@ void DeleteAfter()
     free(ptr);
 }
 
+void DeleteBefore()
+{
+    int val;
+    printf("\nEnter the value before which to delete:");
+    scanf("%d",&val);
+    tmp=start;
+    while(tmp->val!=val)
+    {
+        tmp=tmp->next;
+    }
+    ptr=tmp->prv;
+    tmp->prv=ptr->prv;
+    ptr->prv->next=tmp;
+    free(tmp);
+}
+
 void main()
 {
     int ch;
@@ -166,6 +183,7 @@ void main()
         printf("\n7 --> Delete first node");
         printf("\n8 --> Delete last node");
         printf("\n9 --> Delete after a node");
+        printf("\n10 --> Delete before a node");
         printf("\n0 --> Exit");
         printf("\nEnter Choice:");
         scanf("%d",&ch);
@@ -180,6 +198,7 @@ void main()
             case 7: DeleteFirst(); break;
             case 8: DeleteLast(); break;
             case 9: DeleteAfter(); break;
+            case 10: DeleteBefore(); break;
         }
     } while (ch!=0);
     
