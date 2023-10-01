@@ -18,6 +18,7 @@ void DeleteFirst();
 void DeleteLast();
 void DeleteAfter();
 void DeleteBefore();
+void DeleteNode();
 
 void CreateNode()
 {
@@ -168,6 +169,33 @@ void DeleteBefore()
     free(tmp);
 }
 
+void DeleteNode()
+{
+    int n,c=0,f=0;
+    printf("\nEnter node number:");
+    scanf("%d",&n);
+    ptr=start;
+    while(ptr!=NULL)
+    {
+        c++;
+        if(c==n)
+        {
+            f=1;
+            break;
+        }
+        ptr=ptr->next;
+    }
+    if(f==1)
+    {
+        tmp=ptr->next;
+        ptr->next=tmp->next;
+        tmp->next->prv=ptr;
+        free(tmp);
+    }
+    else
+        printf("\nNode not found");
+}
+
 void main()
 {
     int ch;
@@ -184,6 +212,7 @@ void main()
         printf("\n8 --> Delete last node");
         printf("\n9 --> Delete after a node");
         printf("\n10 --> Delete before a node");
+        printf("\n11 --> Delete any node");
         printf("\n0 --> Exit");
         printf("\nEnter Choice:");
         scanf("%d",&ch);
@@ -199,6 +228,7 @@ void main()
             case 8: DeleteLast(); break;
             case 9: DeleteAfter(); break;
             case 10: DeleteBefore(); break;
+            case 11: DeleteNode(); break;
         }
     } while (ch!=0);
     
