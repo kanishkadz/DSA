@@ -162,16 +162,28 @@ void DeleteFirst()
     free(tmp);
 }
 
-void DeleteLast()
+void DeleteLast() 
 {
-    tmp=start;
-    while(tmp->next!=NULL)
-    {
-        tmp=tmp->next;
+    if (start == NULL) {
+        printf("The list is empty. Nothing to delete.\n");
+        return;
     }
-    tmp->prv->next=NULL;
-    free(tmp);
+    tmp = start;
+    if (tmp->next == NULL) {
+        free(tmp);
+        start = NULL;
+    } 
+    else 
+    {
+        while (tmp->next != NULL) 
+        {
+            tmp = tmp->next;
+        }
+        tmp->prv->next = NULL;
+        free(tmp);
+    }
 }
+
 
 void DeleteAfter()
 {
