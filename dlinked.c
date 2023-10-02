@@ -81,22 +81,32 @@ void InsertLast()
 }
 
 void InsertAfter()
-{
+ {
     int val;
     printf("\nEnter the value after which to insert:");
-    scanf("%d",&val);
-    tmp=start;
-    while(tmp->val!=val)
+    scanf("%d", &val);
+    tmp = start;
+    while (tmp != NULL && tmp->val != val)
     {
-        tmp=tmp->next;
+        tmp = tmp->next;
     }
-    ptr=(N*)malloc(sizeof(N));
-    printf("\nEnter the value:");
-    scanf("%d",ptr->val);
-    ptr->prv=tmp;
-    ptr->next=tmp->next;
-    tmp->next->prv=ptr;
-    tmp->next=ptr;
+    if (tmp == NULL) {
+        printf("Value not found in the linked list.\n");
+        return;
+    }
+    N *ptr = (N*)malloc(sizeof(N));
+    if (ptr == NULL) {
+        printf("Memory allocation failed.\n");
+        return;
+    }
+    printf("Enter the value:");
+    scanf("%d", &ptr->val);
+    ptr->prv = tmp;
+    ptr->next = tmp->next;
+    if (tmp->next != NULL) {
+        tmp->next->prv = ptr;
+    }
+    tmp->next = ptr;
 }
 
 void InsertBefore()
