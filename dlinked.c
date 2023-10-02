@@ -109,22 +109,48 @@ void InsertAfter()
     tmp->next = ptr;
 }
 
-void InsertBefore()
+void InsertBefore() 
 {
     int val;
-    printf("\nEnter the value before which to enter:");
-    scanf("%d",&val);
-    tmp=start;
-    while(tmp->next->val!=val)
+    printf("\nEnter the value before which to insert:");
+    scanf("%d", &val);
+    tmp = start;
+    if (tmp != NULL && tmp->val == val)
     {
-        tmp=tmp->next;
+        N *ptr = (N*)malloc(sizeof(N));
+        if (ptr == NULL)
+        {
+            printf("Memory allocation failed.\n");
+            return;
+        }
+        printf("Enter a value:");
+        scanf("%d", &ptr->val);
+        ptr->prv = NULL; 
+        ptr->next = tmp; 
+        tmp->prv = ptr;   
+        start = ptr;      
+        return;
     }
-    ptr=(N*)malloc(sizeof(N));
-    printf("\nEnter a value:");
-    scanf("%d",ptr->val);
-    ptr->prv=tmp;
-    ptr->next=tmp->next;
-    tmp->next=ptr;
+    while (tmp != NULL && tmp->next != NULL && tmp->next->val != val)
+    {
+        tmp = tmp->next;
+    }
+
+    if (tmp == NULL || tmp->next == NULL) {
+        printf("Value not found in the linked list.\n");
+        return;
+    }
+    N *ptr = (N*)malloc(sizeof(N));
+    if (ptr == NULL) {
+        printf("Memory allocation failed.\n");
+        return;
+    }
+    printf("Enter a value:");
+    scanf("%d", &ptr->val);
+    ptr->prv = tmp;
+    ptr->next = tmp->next;
+    tmp->next->prv = ptr;
+    tmp->next = ptr;
 }
 
 void DeleteFirst()
