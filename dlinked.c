@@ -216,18 +216,31 @@ void DeleteAfter()
 void DeleteBefore()
 {
     int val;
-    printf("\nEnter the value before which to delete:");
-    scanf("%d",&val);
-    tmp=start;
-    while(tmp->val!=val)
+    printf("\nEnter the value before which to delete: ");
+    scanf("%d", &val);
+    if (start == NULL || start->next == NULL) 
     {
-        tmp=tmp->next;
+        printf("The linked list is empty or has only one node, cannot delete before.\n");
+        return;
     }
-    ptr=tmp->prv;
-    tmp->prv=ptr->prv;
-    ptr->prv->next=tmp;
-    free(tmp);
+    struct Node *tmp = start;
+    struct Node *ptr = NULL;
+    while (tmp != NULL && tmp->val != val) 
+    {
+        tmp = tmp->next;
+    }
+    if (tmp == NULL || tmp == start) 
+    {
+        printf("Value not found or no node to delete before.\n");
+        return;
+    }
+    ptr = tmp->prv;
+    ptr->next = tmp;
+    tmp->prv = ptr;
+    free(ptr);
+    printf("Node before value %d has been deleted.\n", val);
 }
+
 
 void DeleteNode()
 {
