@@ -244,30 +244,53 @@ void DeleteBefore()
 
 void DeleteNode()
 {
-    int n,c=0,f=0;
-    printf("\nEnter node number:");
-    scanf("%d",&n);
-    ptr=start;
-    while(ptr!=NULL)
+    int n, c = 0, f = 0;
+    printf("\nEnter node number: ");
+    scanf("%d", &n);
+    if (start == NULL) 
+    {
+        printf("The linked list is empty. Cannot delete a node.\n");
+        return;
+    }
+
+    struct Node *ptr = start;
+    struct Node *tmp = NULL;
+    if (n == 1) {
+        start = start->next;
+        if (start != NULL) 
+        {
+            start->prv = NULL;
+        }
+        free(ptr);
+        printf("Node 1 has been deleted.\n");
+        return;
+    }
+    while (ptr != NULL) 
     {
         c++;
-        if(c==n)
-        {
-            f=1;
+        if (c == n) {
+            f = 1;
             break;
         }
-        ptr=ptr->next;
+        ptr = ptr->next;
     }
-    if(f==1)
+    if (f == 1) 
     {
-        tmp=ptr->next;
-        ptr->next=tmp->next;
-        tmp->next->prv=ptr;
+        tmp = ptr;
+        ptr->prv->next = tmp->next;
+        if (tmp->next != NULL) 
+        {
+            tmp->next->prv = ptr;
+        }
         free(tmp);
+        printf("Node %d has been deleted.\n", n);
+    } 
+    else 
+    {
+        printf("Node not found.\n");
     }
-    else
-        printf("\nNode not found");
 }
+
 
 void main()
 {
