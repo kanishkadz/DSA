@@ -188,18 +188,30 @@ void DeleteLast()
 void DeleteAfter()
 {
     int val;
-    printf("\nEnter the value after which to delete:");
-    scanf("%d",&val);
-    tmp=start;
-    while(tmp->val!=val)
+    printf("\nEnter the value after which to delete: ");
+    scanf("%d", &val);
+    if (start == NULL) 
     {
-        tmp=tmp->next;
+        printf("The linked list is empty.\n");
+        return;
     }
-    ptr=tmp->next;
-    tmp->next=ptr->next;
-    ptr->next=tmp;
+    struct Node *tmp = start;
+    struct Node *ptr = NULL;
+    while (tmp != NULL && tmp->val != val) 
+    {
+        tmp = tmp->next;
+    }
+    if (tmp == NULL || tmp->next == NULL) 
+    {
+        printf("Value not found or no node to delete after.\n");
+        return;
+    }
+    ptr = tmp->next;
+    tmp->next = ptr->next;
     free(ptr);
+    printf("Node after value %d has been deleted.\n", val);
 }
+
 
 void DeleteBefore()
 {
