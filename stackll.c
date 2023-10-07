@@ -10,6 +10,8 @@ typedef struct Node N;
 N *top=NULL, *ptr;
 void push();
 void status();
+void pop();
+void peek();
 
 void push()
 {
@@ -41,6 +43,22 @@ void status()
     {
         printf("\n%d",ptr->val);
         ptr=ptr->next;
+    }
+}
+
+void pop()
+{
+    ptr=top;
+    if(top==NULL)
+    {
+        printf("\nStack Underflow");
+        return;
+    }
+    else
+    {
+        printf("\n%d is popped",pt->val);
+        top=top->next;
+        free(ptr);
     }
 }
 
