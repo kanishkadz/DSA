@@ -5,3 +5,5 @@ It contains:<br>
 <li>Singly Linked List</li>
 <li>Doubly Linked List</li>
 <li>Adding 2 Polynomials</li>
+<li>Stack</li>
+<li>Stack using Linked List</li>
