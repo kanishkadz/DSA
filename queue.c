@@ -4,7 +4,8 @@ int Q[size];
 int front =-1;
 int rear =-1;
 void Insert();
-void status();
+void Status();
+void Delete();
 
 void Insert()
 {
@@ -43,6 +44,18 @@ void Status()
     }
 }
 
+void Delete()
+{
+    if(front>rear)
+    {
+        printf("\nQueue Underflow");
+    }
+    else
+    {
+        front=front+1;
+    }
+}
+
 void main()
 {
     int ch;
@@ -51,12 +64,14 @@ void main()
         printf("\n-: M E N U :-");
         printf("\n1 --> Insert");
         printf("\n2 --> Status");
+        printf("\n3 --> Delete");
         printf("\nEnter Choice:");
         scanf("%d",&ch);
         switch(ch)
         {
             case 1: Insert(); break;
             case 2: Status(); break;
+            case 3: Delete(); break;
         }
     } while (ch!=0);   
 }
