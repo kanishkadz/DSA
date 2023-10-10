@@ -49,7 +49,7 @@ void Status()
             printf("%d",CQ[i]);
             i=(i+1)%size;
         }
-        printf("%d ",CQ[rear]);
+        printf(" %d",CQ[rear]);
     }
 }
 
@@ -86,7 +86,7 @@ void main()
         printf("\n2--> Status");
         printf("\n3--> Delete");
         printf("\n0--> Exit");
-        printf("Enter your choice:");
+        printf("\nEnter your choice:");
         scanf("%d",&ch);
         switch(ch)
         {
