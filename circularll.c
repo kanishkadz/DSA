@@ -69,12 +69,16 @@ void PrintList()
 
 void InsertLast()
 {
-    tmp=start;
-    while(tmp->next!=start)
+    tmp = start;
+    while (tmp->next != start)
     {
-        tmp=tmp->next;
+        tmp = tmp->next;
     }
-    ptr=(N*)malloc(sizeof(N));
-    tmp->next=ptr;
-    ptr->next=start;
+    ptr = (N*)malloc(sizeof(N));
+    if (ptr == NULL) 
+    {
+        return;
+    }
+    ptr->next = start;  
+    tmp->next = ptr; 
 }
