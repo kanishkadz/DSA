@@ -89,17 +89,35 @@ void InsertLast()
 void InsertBefore()
 {
     int v;
-    tmp=start;
-    printf("\nEnter the value before which to insert:");
-    scanf("%d",&v);
-    while(tmp->val!=v)
+    printf("\nEnter the value before which to insert: ");
+    scanf("%d", &v);
+    ptr = (N*)malloc(sizeof(N));
+    if (ptr == NULL) 
     {
-        tmp1=tmp;
-        tmp=tmp->next;
+        printf("Memory allocation failed. Exiting...\n");
+        return;
     }
-    ptr=(N*)malloc(sizeof(N));
-    printf("\nEnter a value:");
-    scanf("%d",&ptr->val);
-    tmp->next=ptr;
-    ptr->next=tmp;
+    printf("Enter a value: ");
+    scanf("%d", &ptr->val);
+    if (start == NULL || start->val == v) 
+    {
+        ptr->next = start;
+        start = ptr;
+        return;
+    }
+    tmp = start;
+    tmp1 = NULL;
+    while (tmp != NULL && tmp->val != v) 
+    {
+        tmp1 = tmp;
+        tmp = tmp->next;
+    }
+    if (tmp == NULL) 
+    {
+        printf("Value %d not found in the list.\n", v);
+        free(ptr); 
+        return;
+    }
+    tmp1->next = ptr;
+    ptr->next = tmp;
 }
