@@ -1,74 +1,93 @@
-#include<stdio.h>
-char stack[20];
-int top=-1;
+#include <stdio.h>
+#include <ctype.h>
 
-void push(char x)
+char stack[20];
+int top = -1;
+
+void push(char x) 
 {
-    if(top==-1)
+    if (top == 19) 
     {
-        return -1;
+        printf("Stack Overflow\n");
+    } 
+    else 
+    {
+        stack[++top] = x;
     }
-    else
+}
+
+char pop() 
+{
+    if (top == -1) 
+    {
+        printf("Stack is empty\n");
+        return -1;
+    } 
+    else 
     {
         return stack[top--];
     }
 }
 
-int priority(char x)
+int priority(char x) 
 {
-    if(x=='(')
+    if (x == '(') 
     {
         return 0;
     }
-    if(x=='+' || x=='-')
+    if (x == '+' || x == '-') 
     {
         return 1;
     }
-    if(x=='*' || x=='/')
+    if (x == '*' || x == '/') 
     {
         return 2;
     }
-    if(x=='^')
+    if (x == '^') 
     {
         return 3;
     }
+    return -1; 
 }
 
-void main()
-{
+int main() 
+{ 
     char exp[20];
     char *e, x;
     printf("\nEnter the expression:");
-    scanf("%s",exp);
-    e=exp;
-    while(*e!='\0')
+    scanf("%s", exp);
+    e = exp;
+    printf("Postfix Expression: ");
+    while (*e != '\0') 
     {
-        if(isalnum(*e))
+        if (isalnum(*e)) 
         {
-            printf("%c",*e);
-        }
-        else if(*e=='(')
+            printf("%c", *e);
+        } 
+        else if (*e == '(') 
         {
             push(*e);
-        }
-        else if(*e==')' || *e=='\0')
+        } 
+        else if (*e == ')') 
         {
-            while((x==pop()) !='(')
+            while ((x = pop()) != '(') 
             {
-                printf("%c",x);
+                printf("%c", x);
             }
-        }
-        else
+        } 
+        else 
         {
-            while((priority(stack[top]))>=priority(*e))
+            while (top != -1 && priority(stack[top]) >= priority(*e)) 
             {
-                printf("%c",pop());
+                printf("%c", pop());
             }
+            push(*e);
         }
-        push(*e);
+        e++;
     }
-    while(top!=-1)
+    while (top != -1) 
     {
-        printf("%c",pop());
+        printf("%c", pop());
     }
+    return 0;
 }
