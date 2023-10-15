@@ -8,7 +8,7 @@ struct Queue
 typedef struct Queue Q;
 Q *front=NULL, *rear=NULL, *ptr;
 
-void CreateList()
+void CreateQ()
 {
     ptr=(Q*)malloc(sizeof(Q));
     printf("\nEnter value to insert:");
@@ -48,4 +48,26 @@ void DeleteQ()
     printf("\n%d is deleted",front->val);
     front=front->next;
     free(ptr);
+}
+
+int main()
+{
+    int ch;
+    do
+    {
+        printf("\n-: M E N U :-");
+        printf("\n1 --> Insert");
+        printf("\n2 --> Status");
+        printf("\n3 --> Delete");
+        printf("\n0 --> Exit");
+        printf("\nEnter Choice:");
+        scanf("%d",&ch);
+        switch(ch)
+        {
+            case 1: CreateQ(); break;
+            case 2: StatusQ(); break;
+            case 3: DeleteQ(); break;
+        }
+    } while (ch!=0);
+    
 }
