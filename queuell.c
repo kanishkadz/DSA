@@ -36,3 +36,16 @@ void StatusQ()
         ptr=ptr->next;
     }
 }
+
+void DeleteQ()
+{
+    ptr=front;
+    if(front==NULL)
+    {
+        printf("\nQueue Overflow");
+        return;
+    }
+    printf("\n%d is deleted",front->val);
+    front=front->next;
+    free(ptr);
+}
