@@ -1,17 +1,18 @@
-#include<stdio.h>
+#include <stdio.h>
 #define size 5
+
 void InsertPQ(int);
 void DeletePQ(int);
-void Check(int);
 void DisplayPQ();
+void Check(int);
 
 int PQ[size];
-int front=-1, rear=-1;
+int front = -1, rear = -1;
 
-void main()
+int main() 
 {
-    int n,ch;
-    do
+    int n, ch;
+    do 
     {
         printf("\n-: M E N U :-");
         printf("\n1 --> Insert");
@@ -19,97 +20,100 @@ void main()
         printf("\n3 --> Display");
         printf("\n4 --> Exit");
         printf("\nEnter your choice:");
-        scanf("%d",&ch);
-        switch(ch)
+        scanf("%d", &ch);
+        switch (ch) 
         {
-            case 1: printf("\nEnter value to insert:");
-                    scanf("%d",&n);
-                    InsertPQ(n); break;
-            case 2: printf("\nEnter value to delete:");
-                    scanf("%d",&n);
-                    DeletePQ(n);
-                    break;
-            case 3: DisplayPQ(); break;
+            case 1:
+                printf("\nEnter value to insert:");
+                scanf("%d", &n);
+                InsertPQ(n);
+                break;
+            case 2:
+                printf("\nEnter value to delete:");
+                scanf("%d", &n);
+                DeletePQ(n);
+                break;
+            case 3:
+                DisplayPQ();
+                break;
         }
-    } while (ch!=4);
+    } while (ch != 4);
+    return 0;
 }
 
-void InsertPQ(int data)
+void InsertPQ(int data) 
 {
-    if(rear>=size-1)
+    if (rear >= size - 1) 
     {
         printf("\nQueue Overflow");
         return;
     }
-    if((front==-1) &&(rear==-1))
-    {
-        front++;
-        rear++;
-        PQ[rear]=data;
-        return;
-    }
-    else
+    if (front == -1 && rear == -1) {
+
+        front = 0;
+        rear = 0;
+        PQ[rear] = data;
+    } 
+    else 
     {
         Check(data);
     }
     rear++;
 }
 
-void Check(int data)
+void Check(int data) 
 {
-    int i,j;
-    for(i=0;i<=rear;i++)
+    int i, j;
+    for (i = 0; i <= rear; i++) 
     {
-        if(data>=PQ[i])
-        {
-            for(j=rear+1;j>1;j--)
+        if (data >= PQ[i]) {
+            for (j = rear; j > i; j--) 
             {
-                PQ[j]=PQ[j-1];
-                PQ[i]=data;
-                return;
+                PQ[j] = PQ[j - 1];
             }
+            PQ[i] = data;
+            return;
         }
-        PQ[i]=data;
     }
+    PQ[i] = data;
 }
 
-void DeletePQ(int data)
+void DeletePQ(int data) 
 {
     int i;
-    if((front==-1)&&(rear==-1))
+    if (front == -1 && rear == -1) 
     {
         printf("\nQueue is empty");
         return;
     }
-    for(i=0;i<=rear;i++)
+    for (i = 0; i <= rear; i++)
     {
-        if(data==PQ[i])
+        if (data == PQ[i]) 
         {
-            for(;i<rear;i++)
+            for (; i < rear; i++) 
             {
-                PQ[i]=PQ[i+1];
+                PQ[i] = PQ[i + 1];
             }
             rear--;
-            if(front==-1)
+            if (front > rear) 
             {
-                front=-1;
-                return;
+                front = rear = -1;
             }
-            printf("%d not found",data);
+            return;
         }
     }
+    printf("%d not found", data);
 }
 
-void DisplayPQ()
+void DisplayPQ() 
 {
-    if((front==-1)&&(rear==-1))
+    if (front == -1 && rear == -1) 
     {
         printf("\nQueue is empty");
         return;
     }
-    for(;front<=rear;front++)
+    for (int i = front; i <= rear; i++) 
     {
-        printf(" %d ",PQ[front]);
+        printf(" %d ", PQ[i]);
     }
-    front=0;
 }
