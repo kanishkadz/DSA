@@ -72,3 +72,30 @@ void Check(int data)
         PQ[i]=data;
     }
 }
+
+void DeletePQ(int data)
+{
+    int i;
+    if((front==-1)&&(rear==-1))
+    {
+        printf("\nQueue is empty");
+        return;
+    }
+    for(i=0;i<=rear;i++)
+    {
+        if(data==PQ[i])
+        {
+            for(;i<rear;i++)
+            {
+                PQ[i]=PQ[i+1];
+            }
+            rear--;
+            if(front==-1)
+            {
+                front=-1;
+                return;
+            }
+            printf("%d not found",data);
+        }
+    }
+}
