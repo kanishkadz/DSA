@@ -33,3 +33,24 @@ void main()
         }
     } while (ch!=4);
 }
+
+void InsertPQ(int data)
+{
+    if(rear>=size-1)
+    {
+        printf("\nQueue Overflow");
+        return;
+    }
+    if((front==-1) &&(rear==-1))
+    {
+        front++;
+        rear++;
+        PQ[rear]=data;
+        return;
+    }
+    else
+    {
+        check(data);
+    }
+    rear++;
+}
