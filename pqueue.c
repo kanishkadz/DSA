@@ -27,7 +27,7 @@ void main()
                     InsertPQ(n); break;
             case 2: printf("\nEnter value to delete:");
                     scanf("%d",&n);
-                    DeletePQ();
+                    DeletePQ(n);
                     break;
             case 3: DisplayPQ(); break;
         }
@@ -50,7 +50,25 @@ void InsertPQ(int data)
     }
     else
     {
-        check(data);
+        Check(data);
     }
     rear++;
+}
+
+void Check(int data)
+{
+    int i,j;
+    for(i=0;i<=rear;i++)
+    {
+        if(data>=PQ[i])
+        {
+            for(j=rear+1;j>1;j--)
+            {
+                PQ[j]=PQ[j-1];
+                PQ[i]=data;
+                return;
+            }
+        }
+        PQ[i]=data;
+    }
 }
