@@ -99,3 +99,17 @@ void DeletePQ(int data)
         }
     }
 }
+
+void DisplayPQ()
+{
+    if((front==-1)&&(rear==-1))
+    {
+        printf("\nQueue is empty");
+        return;
+    }
+    for(;front<=rear;front++)
+    {
+        printf(" %d ",PQ[front]);
+    }
+    front=0;
+}
