@@ -32,7 +32,7 @@ void StatusQ()
     printf("\nQueue is now:-\n");
     while(ptr!=NULL)
     {
-        printf("%d ",ptr->val);
+        printf("%d +",ptr->val);
         ptr=ptr->next;
     }
 }

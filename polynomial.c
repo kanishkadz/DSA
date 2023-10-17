@@ -1,3 +1,4 @@
+//Program to add 2 Polynomials
 #include<stdio.h>
 #include<malloc.h>
 struct PNode
