@@ -83,3 +83,13 @@ void Inorder(T *Tree)
         Inorder(Tree->RC);
     }
 }
+
+void Postorder(T *Tree)
+{
+    if(Tree)
+    {
+        Postorder(Tree->LC);
+        Postorder(Tree->RC);
+        printf("%d ",Tree->info);
+    }
+}
