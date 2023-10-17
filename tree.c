@@ -47,3 +47,19 @@ void Display_Tree(T *Tree,int L)
         Display_Tree(Tree->Lc,L+1);
     }
 }
+
+void main()
+{
+    int info;
+    char ch;
+    do
+    {
+        printf("\nInput Information:");
+        scanf("%d",&info); fflush(stdin);
+        Tree=Create_Tree(info, Tree);
+        printf("\nTree is now:-\n");
+        Display_Tree(Tree,1);
+        printf("\nContinue ?:");
+        scanf("%c",&ch);fflush(stdin);
+    } while(ch!="n");
+}
