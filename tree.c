@@ -63,3 +63,13 @@ void main()
         scanf("%c",&ch);fflush(stdin);
     } while(ch!="n");
 }
+
+void Preorder(T *Tree)
+{
+    if(Tree)
+    {
+        printf("%d ",Tree->info);
+        Preorder(Tree->LC);
+        Preorder(Tree->RC);
+    }
+}
