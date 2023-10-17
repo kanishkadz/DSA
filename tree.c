@@ -30,3 +30,20 @@ T* Create_Tree(int info, T* node)
         node->RC=Create_Tree(info,node->RC);
     }
 }
+
+void Display_Tree(T *Tree,int L)
+{
+    int i;
+    if(Tree)
+    {
+        Display_Tree(Tree->RC,L+1);
+        printf("\n");
+        for(i=0;i<L;i++)
+        {
+            printf(" ");
+        }
+        printf("%d",Tree->info);
+        printf("\n");
+        Display_Tree(Tree->Lc,L+1);
+    }
+}
