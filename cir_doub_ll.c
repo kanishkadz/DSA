@@ -53,3 +53,22 @@ void Print()
     }
 
 }
+
+void main()
+{
+    int ch;
+    do
+    {
+        printf("\n-: M E N U :-");
+        printf("\n1 --> Insert Value");
+        printf("\n2 --> Print");
+        printf("\nEnter your choice:");
+        scanf("%d",&ch);
+        switch(ch)
+        {
+            case 1: CreateNode(); break;
+            case 2: Print(); break;
+        }
+    } while (ch!=0);
+    
+}
